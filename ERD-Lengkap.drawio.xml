@@ -1,0 +1,36 @@
+<mxfile host="app.diagrams.net" modified="2026-08-27T00:00:00.000Z" agent="5.0" version="24.7.13" type="device">
+  <diagram id="Full-ERD" name="ERD Sistem">
+    <mxGraphModel dx="1200" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- User -->
+        <mxCell id="t_user" value="User (Entity)&#xa;--------------------&#xa;PK id : Int&#xa;name : String&#xa;email : String (Unique)&#xa;password : String&#xa;role : String&#xa;createdAt : DateTime" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="160" height="150" as="geometry" /></mxCell>
+
+        <!-- Order -->
+        <mxCell id="t_order" value="Order (Entity)&#xa;--------------------&#xa;PK id : Int&#xa;transactionNumber : String&#xa;FK userId : Int&#xa;status : String&#xa;fulfillment : String&#xa;paymentMethod : String&#xa;paymentStatus : String&#xa;paymentProofUrl : String&#xa;totalAmount : Float&#xa;shippingName : String&#xa;shippingAddress : String&#xa;shippingPhone : String&#xa;createdAt : DateTime&#xa;updatedAt : DateTime" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="220" height="340" as="geometry" /></mxCell>
+
+        <!-- OrderItem -->
+        <mxCell id="t_oi" value="OrderItem (Entity)&#xa;--------------------&#xa;PK id : Int&#xa;FK orderId : Int&#xa;FK productId : Int&#xa;quantity : Int&#xa;price : Float" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="580" y="40" width="160" height="150" as="geometry" /></mxCell>
+
+        <!-- Product -->
+        <mxCell id="t_prod" value="Product (Entity)&#xa;--------------------&#xa;PK id : Int&#xa;name : String&#xa;slug : String&#xa;description : String&#xa;price : Float&#xa;stock : Int&#xa;imageUrl : String&#xa;FK categoryId : Int" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="820" y="40" width="180" height="180" as="geometry" /></mxCell>
+
+        <!-- Category -->
+        <mxCell id="t_cat" value="Category (Entity)&#xa;--------------------&#xa;PK id : Int&#xa;name : String&#xa;slug : String&#xa;description : String&#xa;imageUrl : String" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="820" y="300" width="160" height="130" as="geometry" /></mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="r1" edge="1" parent="1" source="t_user" target="t_order"><mxGeometry relative="1" as="geometry"><mxPoint x="200" y="270" as="sourcePoint"/><mxPoint x="280" y="270" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="t_order" target="t_oi"><mxGeometry relative="1" as="geometry"><mxPoint x="500" y="115" as="sourcePoint"/><mxPoint x="580" y="115" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="t_oi" target="t_prod"><mxGeometry relative="1" as="geometry"><mxPoint x="740" y="115" as="sourcePoint"/><mxPoint x="820" y="115" as="targetPoint"/></mxGeometry></mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="t_prod" target="t_cat"><mxGeometry relative="1" as="geometry"><mxPoint x="910" y="220" as="sourcePoint"/><mxPoint x="910" y="300" as="targetPoint"/></mxGeometry></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,51 @@
+{
+  "name": "website-e-commerce",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n next,api -c blue,green \"next dev -H 0.0.0.0\" \"tsx watch src/server.ts\"",
+    "dev:next": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "server": "tsx watch src/server.ts",
+    "start:server": "tsx src/server.ts",
+    "lint": "eslint",
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.9.1",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.2",
+    "clsx": "^2.1.1",
+    "express": "^5.2.1",
+    "framer-motion": "^12.43.0",
+    "lucide-react": "^1.28.0",
+    "multer": "^2.2.0",
+    "next": "16.2.12",
+    "pg": "^8.23.0",
+    "prisma": "^7.9.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "slugify": "^1.6.9",
+    "tailwind-merge": "^3.6.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.2.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^10.0.4",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.12",
+    "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.1",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,38 @@
+export const HTTP_STATUS = {
+  OK: 200,
+  CREATED: 201,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+  CONFLICT: 409,
+  INTERNAL_SERVER_ERROR: 500,
+} as const;
+
+export const ROLES = {
+  CUSTOMER: "CUSTOMER",
+  ADMIN: "ADMIN",
+} as const;
+
+export const ORDER_STATUS = {
+  MENUNGGU: "MENUNGGU",
+  DIKONFIRMASI: "DIKONFIRMASI",
+  DIPROSES: "DIPROSES",
+  DIKIRIM: "DIKIRIM",
+  SELESAI: "SELESAI",
+  DIBATALKAN: "DIBATALKAN",
+} as const;
+
+export const PAYMENT_STATUS = {
+  BELUM_DIBAYAR: "BELUM_DIBAYAR",
+  DIBAYAR: "DIBAYAR",
+} as const;
+
+export const FULFILLMENT = {
+  AMBIL_SENDIRI: "AMBIL_SENDIRI",
+  PENGIRIMAN: "PENGIRIMAN",
+} as const;
+
+export const PAYMENT_METHOD = {
+  QRIS: "QRIS",
+  BANK_TRANSFER: "BANK_TRANSFER",
+} as const;
