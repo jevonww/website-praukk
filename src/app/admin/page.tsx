@@ -1,12 +1,19 @@
 import { prisma } from "@/lib/prisma";
 import { Package, ShoppingCart, Users, TrendingUp } from "lucide-react";
+import { formatPrice } from "@/lib/utils";
 
 export default async function AdminDashboard() {
-  const [totalProducts, totalOrders, totalUsers] = await Promise.all([
+  const [totalProducts, totalOrders, totalUsers, revenueResult] = await Promise.all([
     prisma.product.count(),
     prisma.order.count(),
     prisma.user.count(),
+    prisma.order.aggregate({
+      _sum: { totalAmount: true },
+      where: { paymentStatus: "DIBAYAR" },
+    }),
   ]);
+
+  const totalRevenue = revenueResult._sum.totalAmount || 0;
 
   const recentOrders = await prisma.order.findMany({
     orderBy: { createdAt: "desc" },
@@ -18,7 +25,7 @@ export default async function AdminDashboard() {
     { icon: Package, label: "Total Produk", value: totalProducts, color: "bg-blue-500" },
     { icon: ShoppingCart, label: "Total Pesanan", value: totalOrders, color: "bg-green-500" },
     { icon: Users, label: "Pengguna", value: totalUsers, color: "bg-purple-500" },
-    { icon: TrendingUp, label: "Pendapatan", value: `Rp${totalOrders * 50000}`, color: "bg-green-500" },
+    { icon: TrendingUp, label: "Pendapatan", value: formatPrice(totalRevenue), color: "bg-green-500" },
   ];
 
   return (

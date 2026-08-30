@@ -35,15 +35,15 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#4ade80]" />
-                0812-3456-7890
+                08822989128737
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#4ade80]" />
-                halo@tahubakso.id
+                tahubaksosabrina@gmail.com
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#4ade80]" />
-                Jakarta, Indonesia
+                Semarang, Indonesia
               </li>
             </ul>
           </div>

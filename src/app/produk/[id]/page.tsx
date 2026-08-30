@@ -8,12 +8,15 @@ export default async function ProductDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const numericId = parseInt(id, 10);
   const product = await prisma.product.findUnique({
-    where: { slug: id },
+    where: !isNaN(numericId) ? { id: numericId } : { slug: id },
     include: { category: true },
   });
 
   if (!product) notFound();
+
+  return <ProductDetailClient product={product} />;
 
   return <ProductDetailClient product={product} />;
 }

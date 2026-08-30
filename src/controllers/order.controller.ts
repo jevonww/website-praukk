@@ -41,7 +41,7 @@ export class OrderController {
         return res.status(400).json({ error: "File gambar diperlukan" });
       }
 
-      const paymentProofUrl = `/uploads/${file.filename}`;
+      const paymentProofUrl = (file as any).path;
       const order = await this.orderService.uploadPaymentProof(transactionNumber, paymentProofUrl);
       res.json({ order: Order.fromRecord(order) });
     } catch (error: any) {

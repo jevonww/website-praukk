@@ -14,7 +14,7 @@ const controller = new ProductController(new ProductService(new ProductRepositor
 router.get("/", asyncHandler(controller.list));
 router.post("/", uploadProduct.single("image"), validate(validateProductCreate), asyncHandler(controller.create));
 router.get("/:id", asyncHandler(controller.getById));
-router.put("/:id", uploadProduct.single("image"), validate(validateProductUpdate), asyncHandler(controller.update));
+router.put("/:id", uploadProduct.single("image"), asyncHandler(controller.update));
 router.delete("/:id", asyncHandler(controller.remove));
 
 export default router;

@@ -24,10 +24,11 @@ export default function ProfilPage() {
     if (hydrated && !user) {
       router.push("/login");
     } else if (user) {
-      setForm({
+      setForm((prev) => ({
+        ...prev,
         address: user.address || "",
         phone: user.phone || "",
-      });
+      }));
     }
   }, [hydrated, user, router]);
 

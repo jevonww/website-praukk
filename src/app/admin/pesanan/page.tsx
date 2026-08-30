@@ -19,7 +19,12 @@ interface Order {
   paymentStatus: string;
   paymentProofUrl: string | null;
   createdAt: string;
-  items: { id: number; product: { name: string }; quantity: number; price: number }[];
+  items: { 
+    id: number; 
+    product: { name: string; imageUrl?: string | null }; 
+    quantity: number; 
+    price: number 
+  }[];
 }
 
 const statusColors: Record<string, string> = {
@@ -160,23 +165,29 @@ export default function AdminPesananPage() {
 
               <div className="border-t dark:border-gray-800 pt-4 mt-4">
                 <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Detail Pesanan:</h4>
-                <div className="space-y-2">
-                  {order.items.map((item) => (
-                    <div key={item.id} className="flex justify-between items-center text-sm p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                      <span className="text-gray-700 dark:text-gray-200 font-medium">
-                        {item.product.name}
-                      </span>
-                      <div className="flex items-center gap-6">
-                        <span className="text-gray-500 dark:text-gray-400">
-                          x{item.quantity}
-                        </span>
-                        <span className="font-semibold text-gray-900 dark:text-white">
-                          {formatPrice(item.price * item.quantity)}
-                        </span>
+                  <div className="space-y-2">
+                    {order.items.map((item) => (
+                      <div key={item.id} className="flex justify-between items-center text-sm p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          {item.product.imageUrl && (
+                            <img src={item.product.imageUrl} alt={item.product.name} className="w-10 h-10 object-cover rounded-md" />
+                          )}
+                          <span className="text-gray-700 dark:text-gray-200 font-medium">
+                            {item.product.name}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-6">
+                          <span className="text-gray-500 dark:text-gray-400">
+                            x{item.quantity}
+                          </span>
+                          <span className="font-semibold text-gray-900 dark:text-white">
+                            {formatPrice(item.price * item.quantity)}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                  <div className="flex justify-between items-center text-sm pt-2 border-t dark:border-gray-700 px-3">
+                    ))}
+                    <div className="flex justify-between items-center text-sm pt-2 border-t dark:border-gray-700 px-3">
+
                     <span className="font-bold text-gray-900 dark:text-white">Total Keseluruhan</span>
                     <span className="font-bold text-lg text-green-600 dark:text-green-400">
                       {formatPrice(order.totalAmount)}

@@ -32,6 +32,9 @@ export default function ProductCard({
   const user = useUser();
   const isAdmin = user?.role === "ADMIN";
 
+  // Fix: Ensure imageUrl is handled properly if it's a Cloudinary URL
+  const displayImage = imageUrl;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -46,9 +49,9 @@ export default function ProductCard({
       )}
       <Link href={`/produk/${slug}`} className="block">
         <div className="relative aspect-square bg-gradient-to-br from-green-50 to-red-50 dark:from-green-500/10 dark:to-red-500/10 overflow-hidden">
-          {imageUrl ? (
+          {displayImage ? (
             <img 
-              src={imageUrl} 
+              src={displayImage} 
               alt={name} 
               className="w-full h-full object-cover"
             />

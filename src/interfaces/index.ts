@@ -30,7 +30,7 @@ export interface CreateProductInput {
   categoryId: number;
 }
 
-export type UpdateProductInput = CreateProductInput;
+export type UpdateProductInput = Partial<CreateProductInput>;
 
 export interface OrderItemInput {
   id: number;

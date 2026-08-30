@@ -40,9 +40,13 @@ export default async function AdminProdukPage() {
                 <tr key={p.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-red-50 to-red-50 dark:from-green-500/10 dark:to-red-500/10 rounded-lg flex items-center justify-center text-xl">
-                        🥟
-                      </div>
+                      {p.imageUrl ? (
+                        <img src={p.imageUrl} alt={p.name} className="w-10 h-10 object-cover rounded-lg" />
+                      ) : (
+                        <div className="w-10 h-10 bg-gradient-to-br from-red-50 to-red-50 dark:from-green-500/10 dark:to-red-500/10 rounded-lg flex items-center justify-center text-xl">
+                          🥟
+                        </div>
+                      )}
                       <span className="font-medium text-gray-900 dark:text-white">{p.name}</span>
                     </div>
                   </td>

@@ -13,6 +13,7 @@ export interface ProductFormData {
   price: number;
   stock: number;
   categoryId: number;
+  imageUrl?: string;
 }
 
 interface ProductFormProps {
@@ -30,6 +31,7 @@ export default function ProductForm({ initial, categories, mode }: ProductFormPr
     stock: initial ? String(initial.stock) : "",
     categoryId: initial ? String(initial.categoryId) : "",
     image: null as File | null,
+    imageUrl: initial?.imageUrl ?? "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -48,8 +50,14 @@ export default function ProductForm({ initial, categories, mode }: ProductFormPr
     formData.append("stock", form.stock);
     formData.append("categoryId", form.categoryId);
     formData.append("slug", slugify(form.name, { lower: true }));
+
     if (form.image) {
       formData.append("image", form.image);
+    } else if (form.imageUrl && form.imageUrl.startsWith("http")) {
+      formData.append("imageUrl", form.imageUrl);
+    } else if (mode === "edit" && !form.imageUrl) {
+      // Jika hapus foto, kirim string kosong untuk menghapus
+      formData.append("imageUrl", "");
     }
 
     const res = await fetch(mode === "edit" ? `/api/products/${initial!.id}` : "/api/products", {
@@ -133,6 +141,21 @@ export default function ProductForm({ initial, categories, mode }: ProductFormPr
           </select>
         </div>
       </div>
+      {form.imageUrl && mode === "edit" && (
+        <div className="mb-4 flex items-center gap-4">
+          <div>
+            <p className={labelClass}>Gambar Saat Ini:</p>
+            <img src={form.imageUrl} alt="Product" className="w-20 h-20 object-cover rounded" />
+          </div>
+          <button
+            type="button"
+            onClick={() => setForm({ ...form, imageUrl: "" })}
+            className="text-sm text-red-500 hover:text-red-700"
+          >
+            Hapus Foto
+          </button>
+        </div>
+      )}
       <div>
         <label className={labelClass}>Gambar Produk</label>
         <input

@@ -14,6 +14,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const hydrated = useHydrated();
 
   useEffect(() => {
+    // Refresh halaman setiap 60 detik (60000 ms)
+    const interval = setInterval(() => {
+      window.location.reload();
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     if (hydrated && (!user || user.role !== "ADMIN")) {
       router.push("/login");
     }

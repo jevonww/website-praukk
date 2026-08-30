@@ -1,3 +1,5 @@
+// Kode di sini menangani lacak pesanan berdasarkan transactionNumber (order code)
+// User tidak perlu login, cukup memiliki kode transaksi yang diberikan saat checkout.
 "use client";
 
 import { useEffect, useState } from "react";

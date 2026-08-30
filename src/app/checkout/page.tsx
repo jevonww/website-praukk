@@ -39,20 +39,10 @@ export default function CheckoutPage() {
   const [fulfillment, setFulfillment] = useState<Fulfillment>("DELIVERY");
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("QRIS");
   const [form, setForm] = useState({
-    name: "",
-    address: "",
-    phone: "",
+    name: user?.name || "",
+    address: user?.address || "",
+    phone: user?.phone || "",
   });
-
-  useEffect(() => {
-    if (user) {
-      setForm({
-        name: user.name || "",
-        address: user.address || "",
-        phone: user.phone || "",
-      });
-    }
-  }, [user]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 

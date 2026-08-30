@@ -14,6 +14,15 @@ export function validateProductCreate(body: any) {
   }
 }
 
-export function validateProductUpdate(body: CreateProductInput) {
-  validateProductCreate(body);
+export function validateProductUpdate(body: any) {
+  if (
+    !body?.name &&
+    !body?.description &&
+    body?.price == null &&
+    body?.stock == null &&
+    body?.categoryId == null &&
+    !body?.imageUrl
+  ) {
+    throw new ApiError(HTTP_STATUS.BAD_REQUEST, "Data tidak lengkap");
+  }
 }
