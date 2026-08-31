@@ -321,7 +321,7 @@ async function main() {
         description: product.description,
         price: product.price,
         stock: product.stock,
-        imageUrl: `/images/products/${product.slug}.jpg`,
+        imageUrl: `https://res.cloudinary.com/dqj6aay3h/image/upload/v1739501509/${product.slug}.jpg`,
         categoryId: category.id,
       },
       create: {
@@ -330,7 +330,7 @@ async function main() {
         description: product.description,
         price: product.price,
         stock: product.stock,
-        imageUrl: `/images/products/${product.slug}.jpg`,
+        imageUrl: `https://res.cloudinary.com/dqj6aay3h/image/upload/v1739501509/${product.slug}.jpg`,
         categoryId: category.id,
       },
     });
