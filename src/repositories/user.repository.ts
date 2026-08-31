@@ -1,4 +1,4 @@
-import type { User as UserRecord } from "@/generated/prisma/client";
+import type { User as UserRecord } from "@prisma/client";
 import { BaseRepository } from "@/classes/base-repository";
 import { ApiError } from "@/classes/api-error";
 import { HTTP_STATUS } from "@/constants";

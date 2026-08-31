@@ -6,6 +6,7 @@
   - Setup: `npx prisma generate` && `npx prisma db push` && `npm run seed`.
 - **Testing**: `npm run seed` runs `prisma/seed.ts` (resets `dev.db`).
 - **Verification**: `npm run lint`.
+- **Build**: `npm run build` performs typechecking as part of the build process.
 
 ### Architecture
 - **FE/BE**: Next.js 16 (App Router) + Express 5.2.1.

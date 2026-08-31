@@ -1,4 +1,4 @@
-import type { Product as ProductRecord } from "@/generated/prisma/client";
+import type { Product as ProductRecord } from "@prisma/client";
 import { BaseRepository } from "@/classes/base-repository";
 import { ApiError } from "@/classes/api-error";
 import { HTTP_STATUS } from "@/constants";

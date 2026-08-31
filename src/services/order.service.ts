@@ -3,7 +3,7 @@ import { ApiError } from "@/classes/api-error";
 import { HTTP_STATUS } from "@/constants";
 import { generateTransactionNumber } from "@/utils/generate-transaction-number";
 import type { CreateOrderInput, UpdateOrderInput } from "@/interfaces";
-import type { Order as OrderRecord } from "@/generated/prisma/client";
+import type { Order as OrderRecord } from "@prisma/client";
 
 const TRANSACTION_ATTEMPTS = 5;
 

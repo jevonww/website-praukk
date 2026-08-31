@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { OrderService } from "@/services/order.service";
 import { Order } from "@/models/order.model";
-import { Order as OrderRecord } from "@/generated/prisma/client";
+import { Order as OrderRecord } from "@prisma/client";
 
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}

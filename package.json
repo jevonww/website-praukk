@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently -k -n next,api -c blue,green \"next dev -H 0.0.0.0\" \"tsx watch src/server.ts\"",
     "dev:next": "next dev -H 0.0.0.0",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "server": "tsx watch src/server.ts",
     "start:server": "tsx src/server.ts",
