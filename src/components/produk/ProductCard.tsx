@@ -32,8 +32,8 @@ export default function ProductCard({
   const user = useUser();
   const isAdmin = user?.role === "ADMIN";
 
-  // Fix: Ensure imageUrl is handled properly if it's a Cloudinary URL
-  const displayImage = imageUrl;
+  // Fix: Ensure imageUrl is handled properly if it's a Cloudinary URL or local path
+  const displayImage = imageUrl?.startsWith("http") ? imageUrl : imageUrl ? `http://localhost:4000${imageUrl}` : null;
 
   return (
     <motion.div
