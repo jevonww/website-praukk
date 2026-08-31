@@ -1,4 +1,4 @@
-import type { Product as ProductRecord } from "@/generated/prisma/client";
+import type { Product as ProductRecord } from "@prisma/client";
 import { BaseModel } from "@/classes/base-model";
 
 export class Product extends BaseModel<ProductRecord> {

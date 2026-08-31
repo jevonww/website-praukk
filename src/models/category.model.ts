@@ -1,4 +1,4 @@
-import type { Category as CategoryRecord } from "@/generated/prisma/client";
+import type { Category as CategoryRecord } from "@prisma/client";
 import { BaseModel } from "@/classes/base-model";
 
 export class Category extends BaseModel<CategoryRecord> {

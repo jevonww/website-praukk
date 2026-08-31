@@ -1,4 +1,4 @@
-import type { Order as OrderRecord } from "@/generated/prisma/client";
+import type { Order as OrderRecord } from "@prisma/client";
 import { BaseModel } from "@/classes/base-model";
 
 export class Order extends BaseModel<OrderRecord> {

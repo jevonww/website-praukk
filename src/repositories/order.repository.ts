@@ -1,4 +1,4 @@
-import type { Order as OrderRecord } from "@/generated/prisma/client";
+import type { Order as OrderRecord } from "@prisma/client";
 import { BaseRepository } from "@/classes/base-repository";
 import { FULFILLMENT, PAYMENT_METHOD, PAYMENT_STATUS, ORDER_STATUS } from "@/constants";
 import type { CreateOrderInput, UpdateOrderInput } from "@/interfaces";
