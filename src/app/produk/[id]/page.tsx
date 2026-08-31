@@ -17,6 +17,4 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   return <ProductDetailClient product={product} />;
-
-  return <ProductDetailClient product={product} />;
 }
