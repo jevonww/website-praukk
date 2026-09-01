@@ -12,10 +12,17 @@ export class OrderRepository extends BaseRepository {
     const isPickup = input.fulfillment === FULFILLMENT.AMBIL_SENDIRI;
     const method = input.paymentMethod === FULFILLMENT.AMBIL_SENDIRI ? PAYMENT_METHOD.QRIS : input.paymentMethod;
 
+    // Cek apakah userId valid di database, jika tidak set null agar tidak melanggar foreign key constraint
+    let validUserId: number | null = null;
+    if (input.userId) {
+      const userExists = await this.client.user.findUnique({ where: { id: input.userId } });
+      if (userExists) validUserId = userExists.id;
+    }
+
     return this.client.order.create({
       data: {
         transactionNumber,
-        userId: input.userId ?? null,
+        userId: validUserId,
         shippingName: input.name,
         shippingAddress: isPickup ? null : input.address ?? null,
         shippingPhone: input.phone,
