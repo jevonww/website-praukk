@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-01T14:12:17.937Z" agent="5.0" etag="dfd-tahu-bakso" version="1.0">
+  <diagram id="dfd-tahu-bakso" name="DFD Tahu Bakso E-Commerce">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="1f1f1f" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- EXTERNAL ENTITIES -->
+        <!-- Admin Entity -->
+        <mxCell id="admin" value="Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=14;fontStyle=1;width=100;height=60;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Pelanggan Entity -->
+        <mxCell id="pelanggan" value="Pelanggan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=14;fontStyle=1;width=100;height=60;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- PROCESSES (Rounded rectangles) -->
+        <!-- 1.0 Manajemen Master Data -->
+        <mxCell id="p1" value="1.0&#10;Manajemen Master Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#ffffff;fontColor=#ffffff;fontSize=12;width=120;height=140;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="120" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- 2.0 Katalog & Order Pelanggan -->
+        <mxCell id="p2" value="2.0&#10;Katalog & Order&#10;Pelanggan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#ffffff;fontColor=#ffffff;fontSize=12;width=120;height=140;" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="120" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- 3.0 Proses Pembayaran -->
+        <mxCell id="p3" value="3.0&#10;Proses Pembayaran" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#ffffff;fontColor=#ffffff;fontSize=12;width=120;height=140;" vertex="1" parent="1">
+          <mxGeometry x="550" y="200" width="120" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- 4.0 Manajemen Pesanan & Laporan -->
+        <mxCell id="p4" value="4.0&#10;Manajemen Pesanan&#10;&amp; Laporan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#ffffff;fontColor=#ffffff;fontSize=12;width=120;height=140;" vertex="1" parent="1">
+          <mxGeometry x="800" y="200" width="120" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Payment Sub-process -->
+        <mxCell id="payment" value="Payment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#ffffff;fontColor=#ffffff;fontSize=12;width=100;height=80;" vertex="1" parent="1">
+          <mxGeometry x="550" y="450" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- DATA STORES (Square rectangles with 'D') -->
+        <!-- D1: Tabel Admin -->
+        <mxCell id="ds1" value="D&#10;Tabel Admin" style="rectangle;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=10;width=80;height=80;" vertex="1" parent="1">
+          <mxGeometry x="50" y="650" width="80" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- D2: Tabel Customer & Subscriber -->
+        <mxCell id="ds2" value="D&#10;Tabel Customer&#10;&amp; Subscriber" style="rectangle;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=10;width=100;height=80;" vertex="1" parent="1">
+          <mxGeometry x="200" y="650" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- D3: Tabel Category & Product -->
+        <mxCell id="ds3" value="D&#10;Tabel Category&#10;&amp; Product" style="rectangle;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=10;width=100;height=80;" vertex="1" parent="1">
+          <mxGeometry x="380" y="650" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- D4: Tabel Order & Order Item -->
+        <mxCell id="ds4" value="D&#10;Tabel Order&#10;&amp; Order Item" style="rectangle;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=10;width=100;height=80;" vertex="1" parent="1">
+          <mxGeometry x="560" y="650" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- D5: Tabel Promo (Banner/Discount/Offer) -->
+        <mxCell id="ds5" value="D&#10;Tabel Promo&#10;(Banner/Discount)" style="rectangle;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=10;width=100;height=80;" vertex="1" parent="1">
+          <mxGeometry x="740" y="650" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- D6: Tabel Setting -->
+        <mxCell id="ds6" value="D&#10;Tabel Setting" style="rectangle;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#ffffff;fontColor=#ffffff;fontSize=10;width=80;height="80;" vertex="1" parent="1">
+          <mxGeometry x="920" y="650" width="80" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- DATA FLOWS -->
+        <!-- Admin to P1: Login & Kelola Data -->
+        <mxCell id="flow1" value="Login &amp; Kelola Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="admin" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Admin to P1: Laporan Penjualan -->
+        <mxCell id="flow2" value="Laporan Penjualan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p4" target="admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Pelanggan to P2: Browse Product & Category -->
+        <mxCell id="flow3" value="Browse Product &amp; Category" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="pelanggan" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Pelanggan to P2: Checkout & Subscribe -->
+        <mxCell id="flow4" value="Checkout &amp; Subscribe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="pelanggan" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P2 to P3: Form Total Tagihan -->
+        <mxCell id="flow5" value="Form Total Tagihan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p2" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P3 to Payment -->
+        <mxCell id="flow6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;" edge="1" parent="1" source="p3" target="payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Payment to P4: Konfirmasi Status Bayar -->
+        <mxCell id="flow7" value="Konfirmasi Status Bayar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="payment" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P1 to DS1: Validasi Admin -->
+        <mxCell id="flow8" value="Validasi Admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p1" target="ds1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P1 to DS1: CRUD Category & Product -->
+        <mxCell id="flow9" value="CRUD Category &amp; Product" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p1" target="ds3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P2 to DS2: Simpan Customer & Subscriber -->
+        <mxCell id="flow10" value="Simpan Customer &amp; Subscriber" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p2" target="ds2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P2 to DS3: Ambil Data & Promosi -->
+        <mxCell id="flow11" value="Ambil Data &amp; Promosi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p2" target="ds3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P2 to DS3: Ambil Category & Product -->
+        <mxCell id="flow12" value="Ambil Category &amp; Product" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p2" target="ds3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P3 to DS4: Simpan Order & Order Item -->
+        <mxCell id="flow13" value="Simpan Order &amp; Order Item" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p3" target="ds4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P3 to DS4: Request Pembayaran -->
+        <mxCell id="flow14" value="Request Pembayaran" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p3" target="ds4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P4 to DS4: Ambil & Update Status Order -->
+        <mxCell id="flow15" value="Ambil &amp; Update Status Order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p4" target="ds4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P4 to DS2: Kelola Data Subscriber -->
+        <mxCell id="flow16" value="Kelola Data Subscriber" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p4" target="ds2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P1 to DS1: Update Status Buyer & Setting -->
+        <mxCell id="flow17" value="Update Status Buyer &amp; Setting" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p1" target="ds6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Pelanggan to P4: Lacak Pesanan -->
+        <mxCell id="flow18" value="Lacak Pesanan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="pelanggan" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- P1 to DS2: CRUD Banner/Discount/Promo -->
+        <mxCell id="flow19" value="CRUD Banner/Discount/Promo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ffffff;fontColor=#ffffff;fontSize=9;" edge="1" parent="1" source="p1" target="ds5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
