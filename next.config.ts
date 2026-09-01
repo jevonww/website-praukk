@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: [
+    '192.168.1.2',
+    'glamorous-traffic-grouped.ngrok-free.dev',
+    '*.ngrok-free.dev',
+    '*.ngrok.io',
+  ],
   images: {
     remotePatterns: [
       {
