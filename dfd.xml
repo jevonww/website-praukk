@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>Data Flow Diagram - Tahu Bakso E-Commerce</title>
+  <description>
+    DFD Level 1 untuk sistem e-commerce Tahu Bakso Sabrina
+    Menampilkan aliran data antara external entities, proses, dan data store
+  </description>
+
+  <external_entities>
+    <entity id="E1" name="Customer" type="person">
+      <description>Pengguna sistem yang melakukan pemesanan produk</description>
+      <interactions>
+        <interaction to="P1" type="login_data" />
+        <interaction to="P2" type="browse_products_request" />
+        <interaction to="P3" type="cart_data" />
+        <interaction to="P4" type="order_request" />
+        <interaction to="P5" type="payment_data" />
+        <interaction to="P6" type="track_request" />
+      </interactions>
+    </entity>
+
+    <entity id="E2" name="Admin" type="person">
+      <description>Manajer sistem yang mengelola produk dan pesanan</description>
+      <interactions>
+        <interaction to="P1" type="login_data" />
+        <interaction to="P7" type="product_management_data" />
+        <interaction to="P8" type="order_management_data" />
+        <interaction to="P9" type="user_management_data" />
+        <interaction to="P10" type="category_management_data" />
+      </interactions>
+    </entity>
+  </external_entities>
+
+  <processes>
+    <process id="P1" name="1.0 Authentication Management" type="process">
+      <description>Proses login dan registrasi pengguna</description>
+      <data_stores>
+        <data_store ref="DS1" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E1" target="P1" label="Login/Reg Data" />
+        <data_flow source="P1" target="E1" label="Auth Result" />
+      </data_flows>
+    </process>
+
+    <process id="P2" name="2.0 Product Catalog" type="process">
+      <description>Menampilkan katalog produk dan detail produk</description>
+      <data_stores>
+        <data_store ref="DS2" />
+        <data_store ref="DS4" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E1" target="P2" label="Browse Request" />
+        <data_flow source="P2" target="E1" label="Product List" />
+      </data_flows>
+    </process>
+
+    <process id="P3" name="3.0 Cart Management" type="process">
+      <description>Manajemen keranjang belanja</description>
+      <data_flows>
+        <data_flow source="E1" target="P3" label="Add/Update Cart" />
+        <data_flow source="P3" target="E1" label="Cart Status" />
+      </data_flows>
+    </process>
+
+    <process id="P4" name="4.0 Order Processing" type="process">
+      <description>Proses pembuatan pesanan baru</description>
+      <data_stores>
+        <data_store ref="DS3" />
+        <data_store ref="DS2" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E1" target="P4" label="Order Request" />
+        <data_flow source="P4" target="E1" label="Order Confirmation" />
+      </data_flows>
+    </process>
+
+    <process id="P5" name="5.0 Payment Processing" type="process">
+      <description>Proses pembayaran dan upload bukti transfer</description>
+      <data_stores>
+        <data_store ref="DS3" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E1" target="P5" label="Payment Proof" />
+        <data_flow source="E1" target="P5" label="Payment Request" />
+        <data_flow source="P5" target="E1" label="Payment Status" />
+      </data_flows>
+    </process>
+
+    <process id="P6" name="6.0 Order Tracking" type="process">
+      <description>Menampilkan status pesanan pelanggan</description>
+      <data_stores>
+        <data_store ref="DS3" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E1" target="P6" label="Track Request" />
+        <data_flow source="P6" target="E1" label="Order Status" />
+      </data_flows>
+    </process>
+
+    <process id="P7" name="7.0 Product Management" type="process">
+      <description>Manajemen produk oleh admin</description>
+      <data_stores>
+        <data_store ref="DS2" />
+        <data_store ref="DS4" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E2" target="P7" label="Product Data" />
+        <data_flow source="P7" target="DS2" label="Store Product" />
+      </data_flows>
+    </process>
+
+    <process id="P8" name="8.0 Order Management" type="process">
+      <description>Manajemen pesanan oleh admin</description>
+      <data_stores>
+        <data_store ref="DS3" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E2" target="P8" label="Order Data" />
+        <data_flow source="P8" target="E2" label="Order Report" />
+      </data_flows>
+    </process>
+
+    <process id="P9" name="9.0 User Management" type="process">
+      <description>Manajemen pengguna oleh admin</description>
+      <data_stores>
+        <data_store ref="DS1" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E2" target="P9" label="User Data" />
+        <data_flow source="P9" target="DS1" label="Update User" />
+      </data_flows>
+    </process>
+
+    <process id="P10" name="10.0 Category Management" type="process">
+      <description>Manajemen kategori produk</description>
+      <data_stores>
+        <data_store ref="DS4" />
+      </data_stores>
+      <data_flows>
+        <data_flow source="E2" target="P10" label="Category Data" />
+        <data_flow source="P10" target="DS4" label="Store Category" />
+      </data_flows>
+    </process>
+  </processes>
+
+  <data_stores>
+    <data_store id="DS1" name="User Database" type="database">
+      <description>Menyimpan data pengguna (User)</description>
+      <attributes>
+        <attribute name="id">Primary Key</attribute>
+        <attribute name="name">String</attribute>
+        <attribute name="email">String (Unique)</attribute>
+        <attribute name="password">String (Hashed)</attribute>
+        <attribute name="role">String (ADMIN/CUSTOMER)</attribute>
+        <attribute name="address">String (Nullable)</attribute>
+        <attribute name="phone">String (Nullable)</attribute>
+        <attribute name="created_at">DateTime</attribute>
+      </attributes>
+    </data_store>
+
+    <data_store id="DS2" name="Product Database" type="database">
+      <description>Menyimpan data produk</description>
+      <attributes>
+        <attribute name="id">Primary Key</attribute>
+        <attribute name="name">String</attribute>
+        <attribute name="slug">String (Unique)</attribute>
+        <attribute name="description">Text (Nullable)</attribute>
+        <attribute name="price">Float</attribute>
+        <attribute name="stock">Integer</attribute>
+        <attribute name="imageUrl">String (Nullable)</attribute>
+        <attribute name="categoryId">Foreign Key</attribute>
+        <attribute name="created_at">DateTime</attribute>
+      </attributes>
+    </data_store>
+
+    <data_store id="DS3" name="Order Database" type="database">
+      <description>Menyimpan data pesanan</description>
+      <attributes>
+        <attribute name="id">Primary Key</attribute>
+        <attribute name="transactionNumber">String (Unique)</attribute>
+        <attribute name="userId">Foreign Key (Nullable)</attribute>
+        <attribute name="status">String (MENUNGGU/DIKONFIRMASI/DIPROSES/DIKIRIM/SELESAI)</attribute>
+        <attribute name="fulfillment">String (PENGIRIMAN/AMBIL_SENDIRI)</attribute>
+        <attribute name="paymentMethod">String (QRIS/BANK_TRANSFER)</attribute>
+        <attribute name="paymentStatus">String (BELUM_DIBAYAR/DIBAYAR)</attribute>
+        <attribute name="paymentProofUrl">String (Nullable)</attribute>
+        <attribute name="totalAmount">Float</attribute>
+        <attribute name="shippingName">String</attribute>
+        <attribute name="shippingAddress">String (Nullable)</attribute>
+        <attribute name="shippingPhone">String</attribute>
+        <attribute name="created_at">DateTime</attribute>
+        <attribute name="updated_at">DateTime</attribute>
+      </attributes>
+    </data_store>
+
+    <data_store id="DS4" name="Category Database" type="database">
+      <description>Menyimpan data kategori produk</description>
+      <attributes>
+        <attribute name="id">Primary Key</attribute>
+        <attribute name="name">String</attribute>
+        <attribute name="slug">String (Unique)</attribute>
+        <attribute name="description">String (Nullable)</attribute>
+        <attribute name="imageUrl">String (Nullable)</attribute>
+        <attribute name="created_at">DateTime</attribute>
+      </attributes>
+    </data_store>
+  </data_stores>
+
+  <data_flows>
+    <data_flow source="P1" target="DS1" label="Store User Data" />
+    <data_flow source="DS1" target="P2" label="User Role Check" />
+    <data_flow source="P2" target="DS2" label="Read Product" />
+    <data_flow source="P2" target="DS4" label="Read Category" />
+    <data_flow source="P3" target="E1" label="Cart Summary" />
+    <data_flow source="P4" target="DS3" label="Create Order" />
+    <data_flow source="P4" target="DS2" label="Update Stock" />
+    <data_flow source="P5" target="DS3" label="Update Payment" />
+    <data_flow source="P6" target="DS3" label="Read Order Status" />
+    <data_flow source="P7" target="DS2" label="CRUD Product" />
+    <data_flow source="P8" target="DS3" label="CRUD Order" />
+    <data_flow source="P9" target="DS1" label="CRUD User" />
+    <data_flow source="P10" target="DS4" label="CRUD Category" />
+  </data_flows>
+</root>
