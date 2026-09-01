@@ -1,9 +1,27 @@
 import type { NextConfig } from "next";
 
-const API_URL = process.env.API_URL ?? "http://192.168.1.2:4000";
-
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["localhost", "127.0.0.1", "*.ngrok-free.app", "*.ngrok.io"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+    ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
