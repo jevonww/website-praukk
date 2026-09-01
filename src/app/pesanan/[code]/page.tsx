@@ -141,7 +141,8 @@ export default function OrderDetailPage({ params }: { params: Promise<{ code: st
         const data = await res.json();
         setOrder(data.order);
         setProofFile(null);
-        window.location.reload(); // Paksa reload agar UI sinkron
+        // Removed window.location.reload()
+
       } else {
         const error = await res.json();
         console.error("Upload proof error:", error);

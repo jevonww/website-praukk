@@ -16,7 +16,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   useEffect(() => {
     // Refresh halaman setiap 60 detik (60000 ms)
     const interval = setInterval(() => {
-      window.location.reload();
+// Removed window.location.reload()
+
     }, 60000);
     return () => clearInterval(interval);
   }, []);
