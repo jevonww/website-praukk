@@ -1,26 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import "dotenv/config";
 
-import { PrismaPg } from "@prisma/adapter-pg";
-import { Pool } from "pg";
 import { PrismaClient } from "@prisma/client";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import bcrypt from "bcryptjs";
 
-const connectionString = process.env.DATABASE_URL;
-
-if (!connectionString) {
-  throw new Error("DATABASE_URL tidak ditemukan di file .env");
-}
-
-const pool = new Pool({
-  connectionString,
-});
-
-const adapter = new PrismaPg(pool);
-
-const prisma = new PrismaClient({
-  adapter,
-});
+const adapter = new PrismaBetterSqlite3({ url: "file:./dev.db" });
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log("Mulai menjalankan seed...");
@@ -348,5 +334,4 @@ main()
   })
   .finally(async () => {
     await prisma.$disconnect();
-    await pool.end();
   });
